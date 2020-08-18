@@ -1,0 +1,19 @@
+Package: ccdfpost
+Title: Plot a Complementary Cumulative Distribution Function for the Posterior Samples of a Causal Effect
+Date: 2020-08-18
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Akisato",
+           family = "Suzuki",
+           role = c("aut", "cre"),
+           email = "akisato.suzuki@gmail.com",
+           comment = c(ORCID = "0000-0003-3691-0236"))
+Description: Plot the posterior samples of a causal effect as a complementary cumulative distribution.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: R (>= 3.6.0)
+Imports: ggplot2 (>= 3.3.0),
+         gridExtra (>= 2.3)
