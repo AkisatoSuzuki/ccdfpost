@@ -1,7 +1,7 @@
 Package: ccdfpost
 Title: Plot a Complementary Cumulative Distribution Function for the Posterior Samples of a Causal Effect
-Date: 2020-08-18
-Version: 0.0.0.9000
+Date: 2020-11-24
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Akisato",
            family = "Suzuki",

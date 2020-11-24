@@ -71,8 +71,8 @@ ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FA
 
 
   # Identify incorrect inputs
-  if(is.numeric(posterior) == FALSE){
-    stop("The input for POSTERIOR must be a numeric vector.")
+  if(is.numeric(posterior) == FALSE | length(posterior[is.na(posterior) == TRUE]) > 0){
+    stop("The input for POSTERIOR must be a numeric vector and must not contain missing values.")
   }
 
   if(is.logical(fromzero) == FALSE){
