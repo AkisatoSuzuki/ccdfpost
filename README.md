@@ -2,11 +2,11 @@
 
 This is an R package. This function produces the plot of a complementary cumulative distribution function for the posterior samples of a causal effect.
 
-For a full example from estimating posterior samples to using them in the ccdfpost function, please see https://akisatosuzuki.github.io/ccdfpost.html.
+For a full example from estimating posterior samples to using them in the ccdfpost function, please see <a href="https://akisatosuzuki.github.io/ccdfpost.html" target="_blank">https://akisatosuzuki.github.io/ccdfpost.html</a>.
 
 For a theoretical rationale for using the plot to summarize posterior samples, please see <a href="https://arxiv.org/abs/2008.07478" target="_blank">Suzuki (2020)</a>.
 
-# Installation
+## Installation
 
 To install this package, you need to have the <a href="https://CRAN.R-project.org/package=devtools" target="_blank">devtools package</a> (Wickham, Hester, and Chang 2020) installed. Once you have the devtools package installed, run the following code to install the ccdfpost package:
 
@@ -14,7 +14,7 @@ To install this package, you need to have the <a href="https://CRAN.R-project.or
 devtools::install_github("AkisatoSuzuki/ccdfpost")
 </code>
 
-# Citation
+## Citation
 
 If you use this package, please cite the following items:
 
@@ -22,7 +22,11 @@ Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: 
 
 Suzuki, Akisato. 2021. "ccdfpost: Plot a Complementary Cumulative Distribution Function for the Posterior Samples of a Causal Effect." R package version 0.0.0.9002.
 
-# References
+## Author
+
+Author & Maintainer: Akisato Suzuki (akisato.suzuki@gmail.com)
+
+## References
 
 Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478 [stat.AP]. https://arxiv.org/abs/2008.07478.
 
