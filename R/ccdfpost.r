@@ -40,7 +40,16 @@
 #'
 #' \href{https://arxiv.org/abs/2008.07478}{Suzuki, Akisato. 2020. "Presenting the
 #' Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication
-#' of Statistical Uncertainty." https://arxiv.org/abs/2008.07478.}
+#' of Statistical Uncertainty." arXiv:2008.07478 [stat.AP]. https://arxiv.org/abs/2008.07478.}
+#'
+#' If you use this package, please cite the following items:
+#'
+#' Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: Towards a Better
+#' Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478 [stat.AP].
+#' https://arxiv.org/abs/2008.07478.
+#'
+#' Suzuki, Akisato. 2021. "ccdfpost: Plot a Complementary Cumulative Distribution Function for
+#' the Posterior Samples of a Causal Effect." R package version 0.0.0.9002.
 #'
 #' @param posterior A vector of posterior samples for a causal factor
 #' @param fromzero Whether a complementary cumulative distribution function is computed from
