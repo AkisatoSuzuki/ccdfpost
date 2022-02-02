@@ -4,7 +4,13 @@
 \alias{ccdfpost}
 \title{Plot a Complementary Cumulative Distribution Function for the Posterior Samples of a Causal Effect}
 \usage{
-ccdfpost(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FALSE)
+ccdfpost(
+  posterior,
+  fromzero = FALSE,
+  zeroprob = FALSE,
+  oneprob = FALSE,
+  ratio = FALSE
+)
 }
 \arguments{
 \item{posterior}{A vector of posterior samples for a causal factor}
@@ -18,6 +24,9 @@ default = \code{FALSE}}
 
 \item{oneprob}{Whether to drop the adjective "near" on the y-axis value of "100\%";
 default = \code{FALSE}}
+
+\item{ratio}{Whether to rescale the posterior samples on the ratio scale to
+the percentage change scale; default = \code{FALSE}}
 }
 \value{
 ggplot object; if posterior samples contain both positive and negative values,
@@ -57,6 +66,12 @@ values of the y-axis (1 and 0 by definition of probability) are expressed as "ne
 is dropped from "0\%"; if \code{oneprob = TRUE}, the adjective "near" is dropped from
 "100\%."
 
+The function takes a value of 0 as the null effect. However, if posterior samples are
+on the ratio scale (e.g., the odds ratio or the hazard ratio), the null effect is a
+value of 1. In such a case, the ratio scale should be rescaled to the percentage
+change scale (e.g., from an odds ratio of 0.95 to 5\% reduction). To do this,
+set \code{ratio} to \code{TRUE}.
+
 For a full example from estimating posterior samples to using them in the ccdfpost function,
 please see \href{https://akisatosuzuki.github.io/ccdfpost.html}{https://akisatosuzuki.github.io/ccdfpost.html}.
 
@@ -65,16 +80,16 @@ the following paper:
 
 \href{https://arxiv.org/abs/2008.07478}{Suzuki, Akisato. 2020. "Presenting the
 Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication
-of Statistical Uncertainty." arXiv:2008.07478 \link{stat.AP}. https://arxiv.org/abs/2008.07478.}
+of Statistical Uncertainty." arXiv:2008.07478 [stat.AP]. https://arxiv.org/abs/2008.07478.}
 
 If you use this package, please cite the following items:
 
-Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: Towards a Better
-Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478 \link{stat.AP}.
+Suzuki, Akisato. 2022. "Presenting the Probabilities of Different Effect Sizes: Towards a Better
+Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478v3 [stat.AP].
 https://arxiv.org/abs/2008.07478.
 
-Suzuki, Akisato. 2021. "ccdfpost: Plot a Complementary Cumulative Distribution Function for
-the Posterior Samples of a Causal Effect." R package version 0.0.0.9002.
+Suzuki, Akisato. 2022. "ccdfpost: Plot a Complementary Cumulative Distribution Function for
+the Posterior Samples of a Causal Effect." R package version 0.0.0.9003.
 }
 \section{Author(s)}{
 

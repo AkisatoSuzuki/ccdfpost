@@ -4,7 +4,7 @@ This is an R package. This function produces the plot of a complementary cumulat
 
 For a full example from estimating posterior samples to using them in the ccdfpost function, please see <a href="https://akisatosuzuki.github.io/ccdfpost.html" target="_blank">https://akisatosuzuki.github.io/ccdfpost.html</a>.
 
-For a theoretical rationale for using the plot to summarize posterior samples, please see <a href="https://arxiv.org/abs/2008.07478" target="_blank">Suzuki (2020)</a>.
+For a theoretical rationale for using the plot to summarize posterior samples, please see <a href="https://arxiv.org/abs/2008.07478" target="_blank">Suzuki (2022)</a>.
 
 ## Installation
 
@@ -18,9 +18,9 @@ devtools::install_github("AkisatoSuzuki/ccdfpost")
 
 If you use this package, please cite the following items:
 
-Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478 [stat.AP]. https://arxiv.org/abs/2008.07478.
+Suzuki, Akisato. 2022. "Presenting the Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478v3 [stat.AP]. https://arxiv.org/abs/2008.07478.
 
-Suzuki, Akisato. 2021. "ccdfpost: Plot a Complementary Cumulative Distribution Function for the Posterior Samples of a Causal Effect." R package version 0.0.0.9002.
+Suzuki, Akisato. 2022. "ccdfpost: Plot a Complementary Cumulative Distribution Function for the Posterior Samples of a Causal Effect." R package version 0.0.0.9003.
 
 ## Author
 
@@ -28,6 +28,6 @@ Author & Maintainer: Akisato Suzuki (akisato.suzuki@gmail.com)
 
 ## References
 
-Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478 [stat.AP]. https://arxiv.org/abs/2008.07478.
+Suzuki, Akisato. 2022. "Presenting the Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478v3 [stat.AP]. https://arxiv.org/abs/2008.07478.
 
 Wickham, Hadley, Jim Hester, and Winston Chang. 2020. "devtools: Tools to Make Developing R Packages Easier." R package version 2.3.0. https://CRAN.R-project.org/package=devtools.

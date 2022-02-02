@@ -32,6 +32,12 @@
 #' is dropped from "0%"; if \code{oneprob = TRUE}, the adjective "near" is dropped from
 #' "100%."
 #'
+#' The function takes a value of 0 as the null effect. However, if posterior samples are
+#' on the ratio scale (e.g., the odds ratio or the hazard ratio), the null effect is a
+#' value of 1. In such a case, the ratio scale should be rescaled to the percentage
+#' change scale (e.g., from an odds ratio of 0.95 to 5% reduction). To do this,
+#' set \code{ratio} to \code{TRUE}.
+#'
 #' For a full example from estimating posterior samples to using them in the ccdfpost function,
 #' please see \href{https://akisatosuzuki.github.io/ccdfpost.html}{https://akisatosuzuki.github.io/ccdfpost.html}.
 #'
@@ -40,16 +46,16 @@
 #'
 #' \href{https://arxiv.org/abs/2008.07478}{Suzuki, Akisato. 2020. "Presenting the
 #' Probabilities of Different Effect Sizes: Towards a Better Understanding and Communication
-#' of Statistical Uncertainty." arXiv:2008.07478 [stat.AP]. https://arxiv.org/abs/2008.07478.}
+#' of Statistical Uncertainty." arXiv:2008.07478 \[stat.AP\]. https://arxiv.org/abs/2008.07478.}
 #'
 #' If you use this package, please cite the following items:
 #'
-#' Suzuki, Akisato. 2020. "Presenting the Probabilities of Different Effect Sizes: Towards a Better
-#' Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478 [stat.AP].
+#' Suzuki, Akisato. 2022. "Presenting the Probabilities of Different Effect Sizes: Towards a Better
+#' Understanding and Communication of Statistical Uncertainty." arXiv:2008.07478v3 \[stat.AP\].
 #' https://arxiv.org/abs/2008.07478.
 #'
-#' Suzuki, Akisato. 2021. "ccdfpost: Plot a Complementary Cumulative Distribution Function for
-#' the Posterior Samples of a Causal Effect." R package version 0.0.0.9002.
+#' Suzuki, Akisato. 2022. "ccdfpost: Plot a Complementary Cumulative Distribution Function for
+#' the Posterior Samples of a Causal Effect." R package version 0.0.0.9003.
 #'
 #' @param posterior A vector of posterior samples for a causal factor
 #' @param fromzero Whether a complementary cumulative distribution function is computed from
@@ -59,6 +65,8 @@
 #' default = \code{FALSE}
 #' @param oneprob Whether to drop the adjective "near" on the y-axis value of "100%";
 #' default = \code{FALSE}
+#' @param ratio Whether to rescale the posterior samples on the ratio scale to
+#' the percentage change scale; default = \code{FALSE}
 #' @return ggplot object; if posterior samples contain both positive and negative values,
 #' the list containing two ggplot objects is returned.
 #' @section Author(s):
@@ -76,7 +84,8 @@
 
 
 
-ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FALSE){
+ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE,
+                     oneprob = FALSE, ratio = FALSE){
 
 
   # Identify incorrect inputs
@@ -94,6 +103,28 @@ ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FA
 
   if(is.logical(oneprob) == FALSE){
     stop("The input for ONEPROB must be a logical constant.")
+  }
+
+  if(is.logical(ratio) == FALSE){
+    stop("The input for RATIO must be a logical constant.")
+  }
+
+  if(ratio == TRUE & length(posterior[posterior<0]) > 0){
+    stop("If RATIO is set to TRUE, the posterior must be on the ratio scale and therefore cannot contain a negative value. Maybe not a ratio scale?")
+  }
+
+
+  # Rescale the ratio scale to the percentage change scale
+  if(ratio == TRUE){
+
+    posterior <- ifelse(posterior > 1,
+                        posterior - 1,
+                        ifelse(posterior < 1,
+                               - (1 - posterior
+                               ),
+                                  ifelse(posterior == 1, 0, NA)
+                        )
+    )
   }
 
 
@@ -271,6 +302,10 @@ ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FA
       ggplot2::labs(x="Minimum predicted change",
                     y="Probability") -> ccdf
 
+    if(ratio == TRUE){
+      ccdf + ggplot2::scale_x_continuous(labels = scales::percent) -> ccdf
+    }
+
   }
 
 
@@ -321,6 +356,11 @@ ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FA
       ggplot2::theme(plot.title=ggplot2::element_text(size = 11)) +
       ggplot2::labs(x="Minimum predicted change",
                     y="Probability") -> ccdf
+
+    if(ratio == TRUE){
+      ccdf + ggplot2::scale_x_continuous(labels = scales::percent) -> ccdf
+    }
+
   }
 
 
@@ -390,8 +430,13 @@ ccdfpost <- function(posterior, fromzero = FALSE, zeroprob = FALSE, oneprob = FA
       ggplot2::labs(x="Minimum predicted change",
                     y="Probability") -> ccdf[[2]]
 
+    if(ratio == TRUE){
+      ccdf[[1]] + ggplot2::scale_x_continuous(labels = scales::percent) -> ccdf[[1]]
+      ccdf[[2]] + ggplot2::scale_x_continuous(labels = scales::percent) -> ccdf[[2]]
+    }
 
   }
+
 
   return(ccdf)
 
